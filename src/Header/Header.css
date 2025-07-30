@@ -1,0 +1,35 @@
+/* Header.css */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #282c34;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 13vh;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #61dafb;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #ffffff;
+}
