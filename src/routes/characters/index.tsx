@@ -2,18 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import { z } from 'zod';
 import { createFileRoute, useSearch } from '@tanstack/react-router'
 import { fetchCharacters, CharacterResponse } from '../../Api/actions'
-import {
-  useReactTable,
-  getCoreRowModel,
-  flexRender,
-  getSortedRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-} from '@tanstack/react-table';
+
 import '../../Css/Table.css'
 import { charcterColumns } from '../../TableDetails/CharacterColumns';
 import Table from '../../TableDetails/Table';
-import { useFilters } from '../../filters/useFilters';
 import { useState } from 'react';
 export const Route = createFileRoute('/characters/')({
   component: CharacterListPage,
@@ -24,7 +16,6 @@ export const Route = createFileRoute('/characters/')({
 
 function CharacterListPage() {
   const { page } = useSearch({ from: "/characters/" })
-  const { filters, resetFilters, setFilters } = useFilters(Route.id);
   type PaginationState = {
     pageIndex: number;
     pageSize: number;

@@ -30,8 +30,8 @@ function CharacterDetails() {
       >
         {data && (
           <img
-            src={data.image}
-            alt={data.name}
+            src={data?.image}
+            alt={data?.name}
             style={{
               width: '100%',
               borderRadius: '10px',
