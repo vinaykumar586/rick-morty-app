@@ -1,29 +1,36 @@
+import { createColumnHelper } from "@tanstack/react-table";
+import { Link } from "@tanstack/react-router";
 
-interface CharacterColumn {
-    header: Function,
-    accessorKey: string,
-    footer: string
-}
+const columnHelper = createColumnHelper<any>();
 
-
-export const charcterColumns: CharacterColumn[] = [{
+export const charcterColumns = [
+  columnHelper.accessor("id", {
     header: () => <span>ID</span>,
-    accessorKey: "id",
-    footer: "ID"
-}, {
+    cell: (info) => info.getValue(),
+    footer: () => "ID",
+  }),
+  columnHelper.accessor("name", {
     header: () => <span>Name</span>,
-    accessorKey: "name",
-    footer: "Name"
-}, {
+    cell: (info) => (
+      <Link to="/characters/$id" params={{ id: info.row.original.id }}>
+        {info.getValue()}
+      </Link>
+    ),
+    footer: () => "Name",
+  }),
+  columnHelper.accessor("status", {
     header: () => <span>Status</span>,
-    accessorKey: "status",
-    footer: "Status"
-}, {
+    cell: (info) => info.getValue(),
+    footer: () => "Status",
+  }),
+  columnHelper.accessor("species", {
     header: () => <span>Species</span>,
-    accessorKey: "species",
-    footer: "Species"
-}, {
+    cell: (info) => info.getValue(),
+    footer: () => "Species",
+  }),
+  columnHelper.accessor("gender", {
     header: () => <span>Gender</span>,
-    accessorKey: "gender",
-    footer: "Gender"
-}]
+    cell: (info) => info.getValue(),
+    footer: () => "Gender",
+  }),
+];

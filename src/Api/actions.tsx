@@ -1,6 +1,7 @@
 
 import api from "./api"
 export const fetchCharacters=async(page:any)=>{
+    console.log(page,"ede")
     let response={}
   await api.get(`character?page=${page}`).then((res)=>{
     if(res.data){
