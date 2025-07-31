@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
 import { z } from 'zod';
 import { createFileRoute, useSearch } from '@tanstack/react-router'
-import { fetchCharacters, CharacterResponse } from '../../Api/actions'
+import { fetchCharacters,CharacterResponse } from '../../Api/actions'
 
 import '../../Css/Table.css'
 import { charcterColumns } from '../../TableDetails/CharacterColumns';
 import Table from '../../TableDetails/Table';
 import { useState } from 'react';
+
+
 export const Route = createFileRoute('/characters/')({
   component: CharacterListPage,
   validateSearch: (search) => ({

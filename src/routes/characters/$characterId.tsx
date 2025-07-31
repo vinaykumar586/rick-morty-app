@@ -2,14 +2,33 @@ import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useParams } from '@tanstack/react-router';
 import { fetchCharactersById } from '../../Api/actions';
 
+interface Character {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  origin: {
+    name: string;
+  };
+  location: {
+    name: string;
+  };
+  image: string;
+}
+
 export const Route = createFileRoute('/characters/$characterId')({
   component: CharacterDetails,
 });
 
-function CharacterDetails() {
-  const { characterId } = useParams({ from: '/characters/$characterId' });
+function CharacterDetails(): JSX.Element {
+  const { characterId } = useParams({ from: '/characters/$characterId' }) as { characterId: string };
 
-  const { data, isLoading, error } = useQuery({
+  const {
+    data,
+    isLoading,
+    error,
+  } = useQuery<Character, Error>({
     queryKey: ['character', characterId],
     queryFn: () => fetchCharactersById(characterId),
   });
