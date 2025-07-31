@@ -32,6 +32,16 @@ function CharacterListPage() {
   })
   const tableData = data?.results || [];
   if (isLoading) return <div>Loading...</div>;
+  
+if (tableData.length === 0) {
+  return (
+    <div style={{ textAlign: 'center', marginTop: '50px', color: '#888' }}>
+      <h1>No Characters Found</h1>
+      <p>The page you are looking for may not exist or has no data.</p>
+    </div>
+  );
+}
+
   return (
     <>
       <div className='charcters_list_page'>

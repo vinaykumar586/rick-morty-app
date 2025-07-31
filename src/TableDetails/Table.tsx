@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import {
   useReactTable,
@@ -48,7 +48,9 @@ const Table: React.FC<TableProps> = ({ tableData, charcterColumns, info, page })
   useEffect(() => {
     setData(tableData);
   }, [tableData]);
+useMemo(()=>{
 
+},[tableData])
   const table = useReactTable({
     data,
     columns: charcterColumns,

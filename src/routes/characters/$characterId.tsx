@@ -34,8 +34,29 @@ function CharacterDetails(): JSX.Element {
   });
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading character details.</div>;
-
+  if (error) {
+    const status = (error as any).status;
+    if (status === 404) {
+      return (
+        <div
+          style={{
+            textAlign: 'center',
+            marginTop: '50px',
+            color: '#ff4d4f',
+            fontFamily: 'Arial, sans-serif',
+          }}
+        >
+          <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Character Not Found</h1>
+          <p style={{ fontSize: '1rem', color: '#888' }}>
+            The character you are looking for does not exist or may have been removed.
+          </p>
+        </div>
+      );
+    }
+    return <div>Error loading character details.</div>;
+  }
+  
+console.log(data,error)
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
       <div
